@@ -1,25 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UsersList from "./components/users-list/users-list";
+import UserProfile from "./components/user-profile/user-profile";
+import { RedirectPage } from "./components/redirect-page/redirect-page";
+import './index.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="users-list" element={<UsersList />}></Route>
+        <Route path="user-profile/new" element={<UserProfile />}></Route>
+        <Route path="user-profile/:id" element={<UserProfile />}></Route>
+        <Route path="*" element={<RedirectPage />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
